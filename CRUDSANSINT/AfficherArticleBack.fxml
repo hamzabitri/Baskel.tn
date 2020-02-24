@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="518.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="articletemoignage.AfficherArticleBackController">
+   <children>
+      <AnchorPane prefHeight="518.0" prefWidth="242.0" style="-fx-background-color: #4f42b5;" />
+      <TableView fx:id="listeArticle" layoutX="277.0" layoutY="89.0" prefHeight="382.0" prefWidth="577.0">
+        <columns>
+          <TableColumn fx:id="titre" onEditCommit="#ChangerNom" prefWidth="128.0" text="Titre" />
+          <TableColumn fx:id="description" onEditCommit="#ChangerDescription" prefWidth="369.60003662109375" text="Description" />
+            <TableColumn fx:id="img" prefWidth="79.99993896484375" text="Image" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="supprimer" layoutX="779.0" layoutY="478.0" onAction="#supprimer" style="-fx-background-color: #4f42b5;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="277.0" layoutY="28.0" text="Liste des articles :" textFill="#4f42b5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="277.0" layoutY="65.0" prefHeight="3.0" prefWidth="578.0" />
+   </children>
+</AnchorPane>
