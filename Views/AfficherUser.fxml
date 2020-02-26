@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="456.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.AfficherUserController">
+   <children>
+      <VBox prefHeight="456.0" prefWidth="215.0" style="-fx-background-color: #4F42B5;">
+         <children>
+            <Pane prefHeight="127.0" prefWidth="195.0">
+               <children>
+                  <ImageView fitHeight="61.0" fitWidth="88.0" layoutX="64.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../azizs/image/logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #4F42B5;" text="Gestion des Evenement" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #353096;" text="Gestion des Utilisateurs" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #4F42B5;" text="Gestion des Locations" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #4F42B5;" text="Gestion du Blog" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #4F42B5;" text="Gestion des Produits" textFill="WHITE" />
+            <AnchorPane prefHeight="106.0" prefWidth="215.0">
+               <children>
+                  <Button fx:id="btnLogOut" layoutX="78.0" layoutY="66.0" mnemonicParsing="false" onAction="#Deconnexion" style="-fx-background-color: #4F42B5;" text="Log Out" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <TextField fx:id="rechercher" layoutX="553.0" layoutY="127.0" />
+      <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="519.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Bureau/baskel/src/baskel/gui/Icon3Fichier%203.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="215.0" layoutY="46.0" prefHeight="51.0" prefWidth="504.0" style="-fx-background-color: #4CC395;">
+         <children>
+            <Label layoutX="93.0" layoutY="10.0" text="Gestion Des Client" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="34.0" fitWidth="39.0" layoutX="46.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Bureau/baskel/src/baskel/gui/Icon1Fichier%201.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <TableView fx:id="table" layoutX="245.0" layoutY="168.0" prefHeight="230.0" prefWidth="538.0">
+        <columns>
+          <TableColumn fx:id="emailt" prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="nomt" onEditCommit="#ChangerNom" prefWidth="75.0" text="Nom" />
+            <TableColumn fx:id="prenomt" onEditCommit="#ChangerPrenom" prefWidth="75.0" text="Prenom" />
+            <TableColumn fx:id="cint" prefWidth="75.0" text="CIN" />
+            <TableColumn fx:id="adresset" onEditCommit="#ChangerAdresse" prefWidth="75.0" text="Adresse" />
+            <TableColumn fx:id="numt" prefWidth="75.0" text="Num_Tel" />
+            <TableColumn fx:id="usernamet" onEditCommit="#ChangerUsername" prefWidth="86.39999999999998" text="Username" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="Delete" layoutX="642.0" layoutY="406.0" onAction="#supprimer" prefHeight="26.0" prefWidth="141.0" style="-fx-background-color: #4CC395;" text="Delete" textFill="WHITE" />
+      <Label fx:id="lblWelcome" layoutX="671.0" layoutY="18.0" prefHeight="22.0" prefWidth="106.0" textAlignment="RIGHT">
+         <font>
+            <Font name="Futura-Light" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
