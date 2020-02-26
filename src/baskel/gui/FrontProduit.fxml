@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baskel.gui.FrontProduitController">
+   <children>
+      <TableView fx:id="tableView" layoutY="6.0" prefHeight="400.0" prefWidth="266.0">
+        <columns>
+          <TableColumn fx:id="imageColumn" prefWidth="140.00000303983688" text="Image" />
+          <TableColumn fx:id="pathColumn" prefWidth="115.99998474121094" text="Path" />
+        </columns>
+      </TableView>
+      <TableView fx:id="table" layoutX="266.0" layoutY="6.0" prefHeight="400.0" prefWidth="334.0">
+        <columns>
+            <TableColumn fx:id="nomColumn" prefWidth="93.60003662109375" text="Nom" />
+            <TableColumn fx:id="prixColumn" prefWidth="104.0" text="Prix" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="136.0" text="Description" />
+            <TableColumn fx:id="quantiteColumn" prefWidth="31.199951171875" text="quantite" />
+            <TableColumn fx:id="categoryColumn" prefWidth="75.0" text="category" />
+            <TableColumn fx:id="referenceColumn" prefWidth="75.0" text="reference" />
+            <TableColumn fx:id="imageColumn1" prefWidth="75.0" text="image" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="456.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baskel.gui.AfficherProduitController">
+   <children>
+      <VBox prefHeight="456.0" prefWidth="215.0" style="-fx-background-color: #4F42B5;">
+         <children>
+            <Pane prefHeight="120.0" prefWidth="215.0">
+               <children>
+                  <ImageView fitHeight="67.0" fitWidth="96.0" layoutX="60.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #4F42B5;" text="Gestion des Evenement" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #4F42B5;" text="Gestion des Utilisateurs" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #4F42B5;" text="Gestion des Locations" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #4F42B5;" text="Gestion du Blog" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #353096;" text="Gestion des Produits" textFill="WHITE" />
+            <Button fx:id="addcatP" mnemonicParsing="false" onAction="#addcatP" prefHeight="34.0" prefWidth="223.0" style="-fx-background-color: #4F42B5;" text="Gestion des Categories P" textFill="WHITE" />
+         </children>
+      </VBox>
+      <GridPane layoutX="226.0" layoutY="161.0" prefHeight="236.0" prefWidth="476.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="239.0" minHeight="10.0" prefHeight="188.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TableView fx:id="table" prefHeight="215.0" prefWidth="188.0">
+              <columns>
+                <TableColumn fx:id="nomP" onEditCommit="#ChangerNom" prefWidth="58.0" text="Nom" />
+                <TableColumn fx:id="refP" minWidth="0.0" onEditCommit="#ChangerRef" prefWidth="81.0" text="Reference" />
+                  <TableColumn fx:id="catP" prefWidth="79.0" text="Categorie" />
+                  <TableColumn fx:id="quanP" onEditCommit="#ChangerQuantite" prefWidth="65.0" text="Quatite" />
+                  <TableColumn fx:id="prixP" onEditCommit="#ChangerPrix" prefWidth="64.0" text="Prix" />
+                  <TableColumn fx:id="imageP" prefWidth="51.0" text="Image" />
+                  <TableColumn fx:id="desP" onEditCommit="#ChangerDes" prefWidth="77.0" text="Description" />
+              </columns>
+            </TableView>
+         </children>
+      </GridPane>
+      <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="527.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Icon3Fichier%203.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="215.0" layoutY="46.0" prefHeight="51.0" prefWidth="504.0" style="-fx-background-color: #4CC395;">
+         <children>
+            <Label layoutX="93.0" layoutY="10.0" text="Gestion Des Produits" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="34.0" fitWidth="39.0" layoutX="46.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Icon1Fichier%201.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Button fx:id="AddP" layoutX="615.0" layoutY="417.0" onAction="#AddProduit" style="-fx-background-color: #4CC395;" text="Ajouter Event" textFill="WHITE" />
+      <Button fx:id="supprimer" layoutX="552.0" layoutY="417.0" onAction="#supprimer" style="-fx-background-color: #CC2727;" text="Delete" textFill="WHITE" />
+      <TextField fx:id="rechercher" layoutX="567.0" layoutY="122.0" prefHeight="25.0" prefWidth="135.0" />
+   </children>
+</AnchorPane>
