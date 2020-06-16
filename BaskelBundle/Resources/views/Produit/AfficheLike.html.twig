@@ -1,0 +1,33 @@
+{% extends 'BaseFront.html.twig' %}
+{% block content %}
+    <main class="ps-main">
+        <div class="ps-content pt-80 pb-80">
+            <div class="ps-container">
+                <div class="ps-cart-listing ps-table--whishlist">
+                    <table class="table ps-cart__table">
+                        <thead>
+                        <tr>
+                            <th>All Products</th>
+                            <th>View</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>{% for e in like %}
+                        <tr>
+                            <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="images/product/cart-preview/1.jpg" alt=""> {{e.username}}</a></td>
+                            {% if e.username==app.user.username %}
+                            <td><a class="ps-product-link" href="{{ path('baskel_afficheDetailL',{'id':e.idArticle}) }}">View Product</a></td>
+                            {% else %}
+                                <td><a class="ps-product-link" href="{{ path('baskel_afficheDetail',{'id':e.idArticle}) }}">View Product</a></td>
+{% endif %}
+                               {# <td>
+                                <div class="ps-remove" href="{{ path('liker_supp',{'id':e.idLike}) }}" ><a href="{{ path('liker_supp',{'id':e.idLike}) }}"></a></div>
+                            </td>#}
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div></main>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'BaseFront.html.twig' %}
+
+{% block content %}
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8 ftco-animate">
+
+
+
+
+
+                    <div class="col-md-12">
+                        <div class="cart-detail bg-light p-3 p-md-4">
+                            <h3 class="billing-heading mb-4" style="text-align: center">Choisissez votre Méthode de Paiement</h3>
+
+                            <div id="paypal-button-container" align="center"></div>
+
+                            <!-- Include the PayPal JavaScript SDK -->
+                            <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+
+                            <script>
+                                // Render the PayPal button into #paypal-button-container
+                                paypal.Buttons({
+
+                                    // Set up the transaction
+                                    createOrder: function(data, actions) {
+                                        return actions.order.create({
+                                            purchase_units: [{
+                                                amount: {
+                                                    value:  {{ carts.total }}
+                                                }
+                                            }]
+                                        });
+                                    },
+
+                                    // Finalize the transaction
+                                    onApprove: function(data, actions) {
+                                        return actions.order.capture().then(function(details) {
+                                            // Show a success message to the buyer
+                                            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                                        });
+                                    }
+
+
+                                }).render('#paypal-button-container');
+                            </script>
+                            </body>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .col-md-8 -->
+        </div>
+        </div>
+    </section> <!-- .section -->
+
+
+
+
+{% endblock %}

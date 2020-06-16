@@ -1,0 +1,79 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block titre %} Modifier Produit {% endblock %}
+{% block content %}
+
+    <div class="card-body card-block">
+
+        {{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+
+        <div class="row form-group">
+            <div class="col col-md-3"><label class=" form-control-label">Nom </label></div>
+            <div class="col-12 col-md-9">{{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }}<small class="form-text text-muted"></small></div>
+            <div class="col-12 col-md-9">
+                <div style="color: red">{{ form_errors(form.nom) }}</div>
+            </div>
+
+        </div>
+
+        <div class="row form-group">
+
+            <div class="col col-md-3"><label class=" form-control-label">Catégorie </label></div>
+            <div class="col-12 col-md-9">{{ form_widget(form.idCategorie, { 'attr': {'class': 'form-control'} }) }}<small class="form-text text-muted"></small></div>
+            <div class="col-12 col-md-9">
+                <div style="color: red">{{ form_errors(form.idCategorie) }}</div>
+            </div>
+
+        </div>
+
+        <div class="row form-group">
+
+            <div class="col col-md-3"><label class=" form-control-label">Reference </label></div>
+            <div class="col-12 col-md-9">{{ form_widget(form.reference, { 'attr': {'class': 'form-control'} }) }}<small class="form-text text-muted"></small></div>
+            <div class="col-12 col-md-9">
+                <div style="color: red"> {{ form_errors(form.reference) }}</div>
+            </div>
+
+        </div>
+
+        <div class="row form-group">
+
+            <div class="col col-md-3"><label class=" form-control-label">Quantite </label></div>
+            <div class="col-12 col-md-9">{{ form_widget(form.quantite, { 'attr': {'class': 'form-control'} }) }}<small class="form-text text-muted"></small></div>
+            <div class="col-12 col-md-9">
+                <div style="color: red"> {{ form_errors(form.quantite) }}</div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+
+            <div class="col col-md-3"><label class=" form-control-label">Prix </label></div>
+            <div class="col-12 col-md-9">{{ form_widget(form.prix, { 'attr': {'class': 'form-control'} }) }}<small class="form-text text-muted"></small></div>
+            <div class="col-12 col-md-9">
+                <div style="color: red"> {{ form_errors(form.prix) }}</div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+
+            <div class="col col-md-3"><label class=" form-control-label">Description </label></div>
+            <div class="col-12 col-md-9">{{ form_widget(form.description, { 'attr': {'class': 'form-control'} }) }}<small class="form-text text-muted"></small></div>
+            <div class="col-12 col-md-9">
+                <div style="color: red"> {{ form_errors(form.description) }}</div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3"><label class=" form-control-label">Image du produit</label></div>
+            <div class="col-12 col-md-9">{{ form_widget(form.image, { 'attr': {'class': 'form-control'} }) }}<small class="form-text text-muted"></small></div>
+            <div class="col-12 col-md-9">
+                <div style="color: red">  {{ form_errors(form.image) }}</div>
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+
+        {{form_widget (form.Submit, {'attr': {'class': 'form-control'}})}}
+        {{form_end (form) }}</form></div>
+
+    <div align="right"><a href="{{ path('baskel_afficheProduitBack')}}" class="btn btn-danger btn-xs">consult Products</a></div>
+
+{% endblock %}

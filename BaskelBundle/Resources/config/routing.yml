@@ -1,0 +1,87 @@
+baskel_homepage:
+    path:     /
+    defaults: { _controller: BaskelBundle:Default:index }
+baskel_ajoutProduit:
+    path:     /ajoutProduit
+    defaults: { _controller: BaskelBundle:Produit:ajoutProduit }
+baskel_afficheProduit:
+    path:     /afficheProduit
+    defaults: { _controller: BaskelBundle:Produit:afficheProduit }
+baskel_afficheProduitBack:
+    path:     /afficheProduitBack
+    defaults: { _controller: BaskelBundle:Produit:afficheProduitBack }
+baskel_afficheDetail:
+    path:     /afficheDetail/{id}
+    defaults: { _controller: BaskelBundle:Produit:afficheDetail}
+baskel_afficheDetailL:
+    path:     /afficheDetailL/{id}
+    defaults: { _controller: BaskelBundle:Produit:afficheDetailL}
+baskel_afficheCategorie:
+    path:     /afficheCategorie
+    defaults: { _controller: BaskelBundle:Produit:afficheCategorie }
+baskel_suppCategorie:
+    path:     /suppCategorie/{id}
+    defaults: { _controller: BaskelBundle:Produit:suppCategorie }
+baskel_ajoutCategorie:
+    path:     /ajoutCategorie
+    defaults: { _controller: BaskelBundle:Produit:ajoutCategorie }
+baskel_suppProduit:
+    path:     /suppProduit/{id}
+    defaults: { _controller: BaskelBundle:Produit:suppProduit }
+baskel_modifierProduit:
+    path:     /modifierProduit/{id}
+    defaults: { _controller: BaskelBundle:Produit:modifierProduit }
+baskel_modifierCategorie:
+    path:     /modifierCategorie/{id}
+    defaults: { _controller: BaskelBundle:Produit:modifierCategorie }
+baskel_rechercheer:
+    path:     /rechercheer
+    defaults: { _controller: BaskelBundle:Produit:rechercheer}
+baskel_rechercheerp:
+    path:     /rechercheerp
+    defaults: { _controller: BaskelBundle:Produit:rechercheerp}
+baskel_rechercheerp1:
+    path:     /rechercheerp1
+    defaults: { _controller: BaskelBundle:Produit:rechercheerp1}
+baskel_filtreproduit:
+    path:     /filtreproduit{id}
+    defaults: { _controller: BaskelBundle:Produit:filtreproduit}
+baskel_triproduit:
+    path:     /triproduit{id}
+    defaults: { _controller: BaskelBundle:Produit:triproduit}
+baskel_savepdf:
+    path:     /savepdf
+    defaults: { _controller: BaskelBundle:Produit:savepdf}
+mskel_savepdf:
+        path:     /m/allp
+        defaults: { _controller: BaskelBundle:Produit:afficheProduitM}
+mskel_savepd:
+    path:     /m/allC
+    defaults: { _controller: BaskelBundle:Produit:afficheCatM}
+liker_Article:
+    path:    /liker/{id}
+    defaults: { _controller: BaskelBundle:Produit:liker}
+Article_likeJ:
+    path: /likerJ/{id}/{idU}/{user}
+    defaults: {_controller: BaskelBundle:Produit:likerJ}
+liker_sup:
+    path:    /suppLike/{id}/{idd}
+    defaults: { _controller: BaskelBundle:Produit:suppLike}
+liker_aff:
+    path:    /afficheLike
+    defaults: { _controller: BaskelBundle:Produit:afficheLike}
+liker_supp:
+    path:    /supppLike/{id}
+    defaults: { _controller: BaskelBundle:Produit:supppLike}
+
+produit_produitF:
+    resource: "@BaskelBundle/Resources/config/produitF.yml"
+    prefix:   /produitF
+
+produit_produit:
+    resource: "@BaskelBundle/Resources/config/produit.yml"
+    prefix:   /produit
+
+
+
+

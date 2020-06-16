@@ -1,0 +1,85 @@
+produit_wish:
+  path:     /{id}/wish
+  defaults: { _controller: "BaskelBundle:Produit:wish" }
+  methods:  GET
+
+produit_wishlist:
+  path:     /wishlist
+  defaults: { _controller: "BaskelBundle:Produit:wishlist" }
+  methods:  GET
+
+wish_delete:
+  path:     /{id}/delete
+  defaults: { _controller: "BaskelBundle:Produit:deleteWish" }
+  methods:  GET
+
+produit_cart:
+  path:     /{id}/cart
+  defaults: { _controller: "BaskelBundle:Produit:addToCart" }
+  methods:  GET
+
+produit_viewC:
+  path:     /cart
+  defaults: { _controller: "BaskelBundle:Produit:Cart" }
+  methods:  GET
+
+cart_delete:
+  path:     /{id}/deleteCart
+  defaults: { _controller: "BaskelBundle:Produit:deleteCart" }
+  methods:  GET
+
+produit_commande:
+  path:     /commande
+  defaults: { _controller: "BaskelBundle:Produit:confirmCart" }
+  methods:  GET
+
+produit_viewCO:
+  path:     /commandeA
+  defaults: { _controller: "BaskelBundle:Produit:commande" }
+  methods:  GET
+
+produit_cat:
+  path:     /{id}/cat
+  defaults: { _controller: "BaskelBundle:Produit:categories" }
+  methods:  GET
+
+produit_afficherM:
+  path:     /all
+  defaults: { _controller: "BaskelBundle:Produit:getAllProducts" }
+
+produit_afficherC:
+  path:     /allC
+  defaults: { _controller: "BaskelBundle:Produit:getAllCats" }
+
+produit_ajoutM:
+  path:     /{id_produit}/ajoutM
+  defaults: { _controller: "BaskelBundle:Produit:panier" }
+
+produit_afficherPanierM:
+  path:     /{id_user}/afficherPanierM
+  defaults: { _controller: "BaskelBundle:Produit:afficherP" }
+
+produit_supprimerPanierM:
+  path:     /{id}/supprimerPanierM
+  defaults: { _controller: "BaskelBundle:Produit:supprimerP" }
+
+produit_confirmerCommandeM:
+  path:     /{total}/confirmerCommandeM
+  defaults: { _controller: "BaskelBundle:Produit:commandeM" }
+
+produit_supprimerLCM:
+  path:     /{id}/supprimerLCM
+  defaults: { _controller: "BaskelBundle:Produit:supprimerLCM" }
+
+produitF_index:
+  path:     /
+  defaults: { _controller: "BaskelBundle:Produit:AfficheProduit" }
+  methods:  GET
+
+
+
+
+
+
+
+

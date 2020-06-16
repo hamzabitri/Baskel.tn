@@ -1,0 +1,24 @@
+produit_commandeindex:
+  path:     /commandeB
+  defaults: { _controller: "BaskelBundle:Produit:commandeBack" }
+  methods:  GET
+
+produit_commandeV:
+  path:     /{id}/commandeValidee
+  defaults: { _controller: "BaskelBundle:Produit:validerCommande" }
+  methods:  GET
+
+produit_commandeR:
+  path:     /{id}/commandeRefusee
+  defaults: { _controller: "BaskelBundle:Produit:refuserCommande" }
+  methods:  GET
+
+produit_commandeDetails:
+  path:     /{id}/commandeDetails
+  defaults: { _controller: "BaskelBundle:Produit:afficherDetails" }
+  methods:  GET
+
+produit_sendMail:
+  path:     /sendMail
+  defaults: { _controller: "BaskelBundle:Produit:sendMail" }
+  methods:  GET

@@ -1,0 +1,107 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block content %}
+
+    <div class="page-header float-right">
+        <form action="{{ path('baskel_rechercheerp') }}" method="post">
+            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <div class="input-group">
+                    <input type="text" name="motcle" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form> </form>
+    </div>
+
+
+    </div>
+
+    <div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title"> Listes des produits </strong>
+
+                        {% for message in app.flashes('info') %}
+                            <div class="alert alert-success">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {% for message in app.flashes('infoo') %}
+                            <div class="alert alert-primary">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {% for message in app.flashes('infooo') %}
+                            <div class="alert alert-warning">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="card-body">
+                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th> Nom </th>
+                                <th> Reference </th>
+                                <th> Categorie </th>
+                                <th> Quantite </th>
+                                <th> Prix </th>
+                                <th> image </th>
+                                <th> Description </th>
+
+                                <th> Actions </th>
+
+                            </tr>
+                            </thead>
+                            <tbody id="myTable">
+                            {% for e in produit %}
+                                <tr id="{{ e.quantite }}">
+
+                                    <td>{{ e.nom }}</td>
+                                    <td>{{ e.reference  }}</td>
+                                    <td>{{ e.idCategorie  }}</td>
+                                    <td>{{ e.quantite }}</td>
+                                    <td>{{ e.prix }}</td>
+                                    <td><img src="{{ asset('uploads/images/' ~ e.image) }}" width="200" height="200"></td>
+                                    <td>{{ e.description }}</td>
+                                    <div>
+                                        <td>
+                                            <a href="{{ path('baskel_afficheDetail',{'id':e.id}) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                            {#<a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#staticModal"><i class="fa fa-trash-o"></i> Supprimer</a>#}
+                                            <a href="{{ path('baskel_modifierProduit',{'id':e.id}) }}"class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Modifier</a>
+                                            <a  href="{{ path('baskel_suppProduit',{'id':e.id}) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Supprimer </a>
+
+                                        </td></div>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table><div align="right">
+                            <td><a href="{{ path('baskel_savepdf')}}" class="btn btn-warning">save pdf</a>
+                            <td><a href="{{ path('baskel_ajoutProduit')}}" class="btn btn-success">add product</a>
+                            <td><a href="{{ path('baskel_afficheCategorie')}}" class="btn btn-primary">consult categories</a></div>
+                        <div id="div_pieChart" align="left"></div>
+
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                            {{ gc_draw(pieChart, 'div_pieChart') }}
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div><!-- .animated -->
+    <div class="navigation">
+        {{ knp_pagination_render(produit) }}
+    </div>
+
+{% endblock %}

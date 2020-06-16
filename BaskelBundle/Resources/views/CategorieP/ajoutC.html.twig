@@ -1,0 +1,26 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block titre %} Ajouter Produit {% endblock %}
+{% block content %}
+
+    <div class="card-body card-block">
+
+        {{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+
+        <div class="row form-group">
+            <div class="col col-md-3"><label class=" form-control-label">Nom </label></div>
+            <div class="col-12 col-md-9">{{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}<small class="form-text text-muted"></small></div>
+            <div class="col-12 col-md-9">
+                <div style="color: red">{{ form_errors(form.name) }}</div>
+            </div>
+
+        </div>
+
+
+        {{ form_end(form) }}
+
+        {{form_widget (form.ajouter, {'attr': {'class': 'form-control'}})}}
+        {{form_end (form) }}</form></div>
+
+    <div align="right"><a href="{{ path('baskel_afficheProduitBack')}}" class="btn btn-danger btn-xs">consult Products</a></div>
+
+{% endblock %}

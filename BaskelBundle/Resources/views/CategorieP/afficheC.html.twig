@@ -1,0 +1,93 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block content %}
+    <div class="page-header float-right">
+        <form action="{{ path('baskel_rechercheerp') }}" method="post">
+            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <div class="input-group">
+                    <input type="text" name="motcle" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form> </form>
+    </div>
+
+
+                    <!-- Topbar Search -->
+
+
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title"> Listes des Categories </strong>
+                                {% for message in app.flashes('warning') %}
+                                    <div class="alert alert-danger">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                {% for message in app.flashes('info') %}
+                                    <div class="alert alert-success">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                {% for message in app.flashes('infoo') %}
+                                    <div class="alert alert-primary">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                {% for message in app.flashes('infooo') %}
+                                    <div class="alert alert-warning">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th> Nom </th>
+
+                                        <th> Actions </th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for e in categoriep %}
+                                    <tr>
+
+                                        <td>{{ e.name }}</td>
+                                        <td><a href="{{ path('baskel_suppCategorie',{'id':e.id}) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Supprimer</a>
+                                        <a href="{{ path('baskel_modifierCategorie',{'id':e.id}) }}"class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>modifier</a></td>
+
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                </table><div align="right">
+                                <td><a href="{{ path('baskel_afficheProduitBack')}}" class="btn btn-primary">consult Products</a>
+                                <td><a href="{{ path('baskel_ajoutCategorie')}}" class="btn btn-success">Add category</a>
+                                    </td></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div><!-- .animated -->
+            <div class="navigation">
+                {{ knp_pagination_render(categoriep) }}
+            </div>
+        </div><!-- .content -->
+
+
+    </div><!-- /#right-panel -->
+
+
+{% endblock %}

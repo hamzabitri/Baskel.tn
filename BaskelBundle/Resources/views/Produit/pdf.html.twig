@@ -1,0 +1,52 @@
+
+
+
+
+<title> Listes des produits </title>
+
+
+
+                                <table width="100%" cellspacing="8" cellpadding="5" border="-1" align="center" bgcolor="#000000" >
+                                    <thead>
+                                    <tr bgcolor="#ffffff" align="center">
+                                        <th bgcolor="#999999"> Nom </th>
+                                        <th bgcolor="#ffffff"> Reference </th>
+                                        <th bgcolor="#999999"> Categorie </th>
+                                        <th bgcolor="#ffffff"> Quantite </th>
+                                        <th bgcolor="#999999">  Prix </th>
+                                        <th bgcolor="#ffffff"> Description </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody >
+                                    {% for e in produit %}
+                                        <tr align="center">
+                                            <td bgcolor="#999999">{{ e.nom }}</td>
+                                            <td bgcolor="#ffffff">{{ e.reference  }}</td>
+                                            <td bgcolor="#999999">{{ e.idCategorie  }}</td>
+                                            <td bgcolor="#ffffff">{{ e.quantite }}</td>
+                                            <td bgcolor="#999999">{{ e.prix }}</td>
+                                            <td bgcolor="#ffffff">{{ e.description }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
