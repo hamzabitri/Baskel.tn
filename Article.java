@@ -3,83 +3,116 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entities;
+package Entities;
 
 /**
  *
  * @author onsks
  */
 public class Article {
-     private int ida;
-    private int idc;
-    String titre ;
-    String description;
-    String imageA;
-
-    public Article(int ida, int idc, String titre, String description,String imageA) {
-        this.ida = ida;
-        this.idc = idc;
-        this.titre = titre;
-        this.description=description;
-        this.imageA=imageA;
-    }
-
-    public Article(int idc, String titre, String description, String imageA) {
-        this.idc = idc;
-        this.titre = titre;
-        this.description=description;
-        this.imageA=imageA;
-    }
     
-     public Article(String titre, String description, String imageA) {
-        this.titre = titre;
-        this.description=description;
-        this.imageA=imageA;
+    private int id;
+    private int category;
+    private int comments;
+    private int likes;  
+    private  String title;
+    private String content;
+    private String image;
+    private  String date;
+
+    public Article() {
     }
 
-    public int getIda() {
-        return ida;
+    public Article(int id, int category, int comments, int likes, String title, String content, String image, String date) {
+        this.id = id;
+        this.category = category;
+        this.comments = comments;
+        this.likes = likes;
+        this.title = title;
+        this.content = content;
+        this.image = image;
+        this.date = date;
     }
 
-    public void setIda(int id) {
-        this.ida = id;
+    public Article(int category, int comments, int likes, String title, String content, String image, String date) {
+        this.category = category;
+        this.comments = comments;
+        this.likes = likes;
+        this.title = title;
+        this.content = content;
+        this.image = image;
+        this.date = date;
     }
 
-    public int getIdc() {
-        return idc;
+    public int getId() {
+        return id;
     }
 
-    public void setIdc(int id) {
-        this.idc = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getTitre() {
-        return titre;
+    public int getCategory() {
+        return category;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-    
-     public String getDescription() {
-        return description;
+    public void setCategory(int category) {
+        this.category = category;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
-     public String getImageA() {
-        return imageA;
+    public int getComments() {
+        return comments;
     }
 
-    public void setImgA(String imageA) {
-        this.imageA= imageA;
+    public void setComments(int comments) {
+        this.comments = comments;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override
     public String toString() {
-        return "Article{" + "ida=" + ida + ", idc=" + idc + ", titre=" + titre +", description=" + description +", imageA=" + imageA + '}';
+        return "Article{" + "id=" + id + ", category=" + category + ", comments=" + comments + ", likes=" + likes + ", title=" + title + ", content=" + content + ", image=" + image + ", date=" + date + '}';
     }
     
+    
+
 }

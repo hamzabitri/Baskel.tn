@@ -3,113 +3,73 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+package Services;
 
-import entities.Article;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import Entities.Article;
+import Utils.CnxRequest;
+import Utils.Statics;
+import com.codename1.io.CharArrayReader;
+import com.codename1.io.ConnectionRequest;
+import com.codename1.io.JSONParser;
+import com.codename1.io.MultipartRequest;
+import com.codename1.io.NetworkEvent;
+import com.codename1.io.NetworkManager;
+import com.codename1.io.rest.Response;
+import com.codename1.io.rest.Rest;
+import com.codename1.ui.List;
+import com.codename1.ui.events.ActionListener;
+import com.codename1.util.Base64;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import utils.*;
+import java.util.Map;
+
 /**
  *
- * @author onsks
+ * @author onsk
  */
 public class ArticleService {
-     private final Connection con;
-    private Statement ste;
-        private ResultSet res ;
-
-
-    public  ArticleService() throws SQLException {
-    con = DataBase.getInstance().getCnx();
-
-    }
-
-     
-    public void ajouter(Article t) throws SQLException {
-        ste = con.createStatement();
-        String requeteInsert = "INSERT INTO `article` (`idarticle`, `idclient`, `titre`,`description`,`imageA`) VALUES (NULL, ' + t.getIdc()+ ', '" + t.getTitre()+ "','" + t.getDescription()+ "','" + t.getImageA()+ "');";
-        ste.executeUpdate(requeteInsert);
-    }
-    public void ajouter1(Article p) throws SQLException
-    {
-    PreparedStatement pre=con.prepareStatement("INSERT INTO `article` (`idclient`,`titre`,`description`,`imageA`) VALUES (?,?,?,?);");
-    pre.setInt(1, p.getIdc());
-    pre.setString(2, p.getTitre());
-    pre.setString(3, p.getDescription());
-    pre.setString(4, p.getImageA());
-    pre.executeUpdate();
-    }
-            
-
-     
-    public boolean delete(Article t) throws SQLException {
-           
-               PreparedStatement pre=con.prepareStatement("DELETE FROM `article` WHERE idarticle='"+ t.getIda()+"' ;");
-              // pre.executeUpdate();       
-                int a=pre.executeUpdate();
-                return(a!=0);
-    }
-
-     
-    public boolean update(Article t,String titre) throws SQLException {
-               PreparedStatement pre=con.prepareStatement("UPDATE `article`  SET titre='"+ titre  +"' where idclient='"+ t.getIdc() +"' ;");
-               int a=pre.executeUpdate();
-               return(a!=0);
-    }
-
-   
-     
-    public List<Article> readAll() throws SQLException {
-    List<Article> arr=new ArrayList<>();
-    ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from article");
-     while (rs.next()) {                
-               int ida=rs.getInt(1);
-               int idc=rs.getInt(2);
-               String titre=rs.getString(3);
-               String description=rs.getString(4);
-               String img=rs.getString(5);
-               Article p=new Article(ida, idc, titre,description,img);
-     arr.add(p);
-     }
-    return arr;
-   }
- 
-     
-       
-    public List<Article> getTrier() throws SQLException {
-    List<Article> arr=new ArrayList<>();
-    ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from article ORDER BY idclient DESC");
-     while (rs.next()) {                
-               int ida=rs.getInt(1);
-               int idc=rs.getInt(2);
-               String titre=rs.getString(3);
-               String description=rs.getString(4);
-               String img=rs.getString(5);
-               Article p=new Article(ida, idc, titre, description, img);
-     arr.add(p);
-     }
-    return arr;
+   private ConnectionRequest req;
+   private ArrayList<Article> articles;
+    
+    public ArticleService() {
+        req=CnxRequest.getInstance().getConnectionRequest();
     }
     
-    public void updatetab(Article a) throws SQLException {
-            try {
-        PreparedStatement PS=con.prepareStatement("UPDATE `article` SET `titre`=? ,`description`=? WHERE `idarticle`=?");
-        PS.setString(1,a.getTitre());
-        PS.setString(2, a.getDescription());
-        PS.setInt(3,a.getIda());                   
-        PS.executeUpdate();
-            } catch (Exception e) {
-                Logger.getLogger(ArticleService.class.getName()).log(Level.SEVERE,null,e);
+    public ArrayList<Article> getArticle() {
+        String url=Statics.BASE_URL+"B/article/all";
+        req.setUrl(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent a) {
+                articles=parseEvent(new String(req.getResponseData()));
+                req.removeResponseListener(this);
             }
-
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return articles;
     }
+    
+    private ArrayList<Article> parseEvent(String json) {
+        try {
+            articles=new ArrayList<>();
+            JSONParser parser=new JSONParser();
+            Map<String, Object> eventsJson=parser.parseJSON(new CharArrayReader(json.toCharArray()));
+            ArrayList<Map<String, Object>> liste=(ArrayList<Map<String, Object>>)eventsJson.get("root");
+            for (Map<String, Object> obj : liste) {
+                Article e = new Article();
+                e.setId((int)Float.parseFloat(obj.get("id").toString()));
+                e.setTitle(obj.get("title").toString());
+                e.setContent(obj.get("content").toString());
+                e.setImage(obj.get("image").toString());
+                e.setDate(obj.get("date").toString());
+
+                 articles.add(e);
+            }
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+        return articles;
+    }
+    
+             
 }
